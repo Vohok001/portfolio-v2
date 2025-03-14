@@ -1,27 +1,31 @@
-// src/components/ui/ProjectMediaCarousel.jsx
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
-const ProjectMediaCarousel = ({ media }) => {
+const ProjectMediaCarousel = ({ media, coverImage }) => {
+  // Initialize with media array that includes the coverImage if provided
+  const allMedia = coverImage
+    ? [{ type: 'image', src: coverImage.src, alt: coverImage.alt }, ...media]
+    : media;
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === media.length - 1 ? 0 : prevIndex + 1
+      prevIndex === allMedia.length - 1 ? 0 : prevIndex + 1
     );
   };
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? media.length - 1 : prevIndex - 1
+      prevIndex === 0 ? allMedia.length - 1 : prevIndex - 1
     );
   };
 
   return (
     <div className="relative w-full">
       <div className="aspect-w-16 aspect-h-9 bg-gray-200 dark:bg-gray-700 rounded-lg overflow-hidden">
-        {media.map((item, index) => (
+        {allMedia.map((item, index) => (
           <div
             key={index}
             className={`absolute inset-0 transition-opacity duration-300 ${
@@ -32,7 +36,7 @@ const ProjectMediaCarousel = ({ media }) => {
               <img
                 src={item.src}
                 alt={item.alt || `Project image ${index + 1}`}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain bg-white dark:bg-gray-800"
               />
             ) : item.type === 'video' ? (
               <video
@@ -47,7 +51,7 @@ const ProjectMediaCarousel = ({ media }) => {
       </div>
 
       {/* Navigation Buttons */}
-      {media.length > 1 && (
+      {allMedia.length > 1 && (
         <>
           <button
             onClick={prevSlide}
@@ -67,9 +71,9 @@ const ProjectMediaCarousel = ({ media }) => {
       )}
 
       {/* Indicator Dots */}
-      {media.length > 1 && (
+      {allMedia.length > 1 && (
         <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1 z-10">
-          {media.map((_, index) => (
+          {allMedia.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}

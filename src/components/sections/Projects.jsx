@@ -1,14 +1,30 @@
-// src/components/sections/Projects.jsx
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FiExternalLink, FiGithub, FiChevronLeft, FiChevronRight, FiX } from 'react-icons/fi';
 import { projects } from '../../data/projects';
 import ProjectMediaCarousel from '../ui/ProjectMediaCarousel';
 
+const getFixedImagePath = (path) => {
+  if (!path) return null;
+  if (path.includes('VVhp.png')) {
+    return path;
+  }
+  if (path.includes('lb-1.png')) {
+    return 'images/laundry/lb-1.png';
+  }
+  if (path.includes('quest-cover.png')) {
+    return 'images/quest/quest-cover.png';
+  }
+  return path;
+};
+
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef(null);
+
+  // Add state to track which images have successfully loaded
+  const [loadedImages, setLoadedImages] = useState({});
 
   const featuredProjects = projects.filter(project => project.featured);
   const allProjects = projects;
@@ -53,6 +69,11 @@ const Projects = () => {
       opacity: 1,
       transition: { duration: 0.5 },
     },
+  };
+
+  // Function to handle successful image loads
+  const handleImageLoad = (projectId) => {
+    setLoadedImages(prev => ({...prev, [projectId]: true}));
   };
 
   return (
@@ -114,10 +135,39 @@ const Projects = () => {
                       transition={{ duration: 0.2 }}
                     >
                       <div className="aspect-w-16 aspect-h-9 bg-gray-300 dark:bg-gray-700">
-                        {/* Placeholder for project image */}
-                        <div className="w-full h-64 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white">
-                          {project.title}
-                        </div>
+                        {project.coverImage ? (
+                          <>
+                            {/* Try the fixed path first */}
+                            <img
+                              src={getFixedImagePath(project.coverImage.src)}
+                              alt={project.coverImage.alt || project.title}
+                              className="w-full h-64 object-cover"
+                              onLoad={() => handleImageLoad(project.id)}
+                              onError={(e) => {
+                                console.log(`Image failed to load: ${e.target.src}`);
+                                e.target.onerror = null;
+                                // Try alternative paths as fallback
+                                if (e.target.src.startsWith('/')) {
+                                  e.target.src = e.target.src.substring(1); // Try without leading slash
+                                } else if (!e.target.src.startsWith('/') && !e.target.src.includes('://')) {
+                                  e.target.src = '/' + e.target.src; // Try with leading slash
+                                } else {
+                                  // If all attempts fail, show the fallback
+                                  e.target.style.display = 'none';
+                                  e.target.parentElement.innerHTML = `
+                                    <div class="w-full h-64 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white">
+                                      ${project.title}
+                                    </div>
+                                  `;
+                                }
+                              }}
+                            />
+                          </>
+                        ) : (
+                          <div className="w-full h-64 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white">
+                            {project.title}
+                          </div>
+                        )}
                       </div>
                     </motion.div>
 
@@ -143,15 +193,28 @@ const Projects = () => {
                         >
                           View Details
                         </button>
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="px-4 py-2 flex items-center space-x-2 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-white rounded-lg transition-colors"
-                        >
-                          <FiExternalLink size={16} />
-                          <span>Live Demo</span>
-                        </a>
+                        {project.liveUrl && (
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-4 py-2 flex items-center space-x-2 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-white rounded-lg transition-colors"
+                          >
+                            <FiExternalLink size={16} />
+                            <span>Live Demo</span>
+                          </a>
+                        )}
+                        {project.githubUrl && !project.liveUrl && (
+                          <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-4 py-2 flex items-center space-x-2 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-white rounded-lg transition-colors"
+                          >
+                            <FiGithub size={16} />
+                            <span>View Code</span>
+                          </a>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -179,11 +242,30 @@ const Projects = () => {
                 className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden transition-all duration-300"
               >
                 <div className="aspect-w-16 aspect-h-9 bg-gray-300 dark:bg-gray-700">
-                  {project.media && project.media.length > 0 ? (
+                  {project.coverImage ? (
                     <img
-                      src={project.media[0].type === 'image' ? project.media[0].src : project.media[0].poster || ''}
-                      alt={project.media[0].alt || project.title}
-                      className="w-full h-full object-cover"
+                      src={getFixedImagePath(project.coverImage.src)}
+                      alt={project.coverImage.alt || project.title}
+                      className="w-full h-48 object-cover"
+                      onLoad={() => handleImageLoad(project.id)}
+                      onError={(e) => {
+                        console.log(`Grid image failed to load: ${e.target.src}`);
+                        e.target.onerror = null;
+                        // Try alternative paths as fallback
+                        if (e.target.src.startsWith('/')) {
+                          e.target.src = e.target.src.substring(1); // Try without leading slash
+                        } else if (!e.target.src.startsWith('/') && !e.target.src.includes('://')) {
+                          e.target.src = '/' + e.target.src; // Try with leading slash
+                        } else {
+                          // If all attempts fail, show the fallback
+                          e.target.style.display = 'none';
+                          e.target.parentElement.innerHTML = `
+                            <div class="w-full h-48 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white">
+                              ${project.title}
+                            </div>
+                          `;
+                        }
+                      }}
                     />
                   ) : (
                     <div className="w-full h-48 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white">
@@ -219,24 +301,28 @@ const Projects = () => {
                     >
                       Details
                     </button>
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-white rounded-lg transition-colors"
-                      aria-label="GitHub Repository"
-                    >
-                      <FiGithub size={18} />
-                    </a>
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-white rounded-lg transition-colors"
-                      aria-label="Live Demo"
-                    >
-                      <FiExternalLink size={18} />
-                    </a>
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-white rounded-lg transition-colors"
+                        aria-label="GitHub Repository"
+                      >
+                        <FiGithub size={18} />
+                      </a>
+                    )}
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-white rounded-lg transition-colors"
+                        aria-label="Live Demo"
+                      >
+                        <FiExternalLink size={18} />
+                      </a>
+                    )}
                   </div>
                 </div>
               </motion.div>
@@ -272,22 +358,58 @@ const Projects = () => {
               </button>
 
               <div className="p-6">
-                <h3 className="text-2xl md:text-3xl font-bold mb-4 text-gray-800 dark:text-white">{selectedProject.title}</h3>
+                <h3 className="text-2xl md:text-3xl font-bold mb-4 text-gray-800 dark:text-white">
+                  {selectedProject.title}
+                </h3>
 
-                <div className="aspect-w-16 aspect-h-9 bg-gray-300 dark:bg-gray-700 mb-6 rounded-lg overflow-hidden">
-                  {/* Placeholder for project image */}
-                  {selectedProject.media && selectedProject.media.length > 0 ? (
-                    <div className="mb-6">
-                      <ProjectMediaCarousel media={selectedProject.media} />
+                {/* Project Media Display */}
+                {selectedProject.media && selectedProject.media.length > 0 ? (
+                  <div className="mb-6">
+                    <ProjectMediaCarousel
+                      media={selectedProject.media.map(item => ({
+                        ...item,
+                        src: item.type === 'image' ? getFixedImagePath(item.src) : item.src,
+                        poster: item.poster ? getFixedImagePath(item.poster) : item.poster
+                      }))}
+                      coverImage={selectedProject.coverImage ? {
+                        ...selectedProject.coverImage,
+                        src: getFixedImagePath(selectedProject.coverImage.src)
+                      } : null}
+                    />
+                  </div>
+                ) : selectedProject.coverImage ? (
+                  <div className="aspect-w-16 aspect-h-9 bg-gray-300 dark:bg-gray-700 mb-6 rounded-lg overflow-hidden">
+                    <img
+                      src={getFixedImagePath(selectedProject.coverImage.src)}
+                      alt={selectedProject.coverImage.alt || selectedProject.title}
+                      className="w-full h-64 object-cover"
+                      onError={(e) => {
+                        console.log(`Modal image failed to load: ${e.target.src}`);
+                        e.target.onerror = null;
+                        // Try alternative paths as fallback
+                        if (e.target.src.startsWith('/')) {
+                          e.target.src = e.target.src.substring(1); // Try without leading slash
+                        } else if (!e.target.src.startsWith('/') && !e.target.src.includes('://')) {
+                          e.target.src = '/' + e.target.src; // Try with leading slash
+                        } else {
+                          // If all attempts fail, show the fallback
+                          e.target.style.display = 'none';
+                          e.target.parentElement.innerHTML = `
+                            <div class="w-full h-64 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white">
+                              ${selectedProject.title}
+                            </div>
+                          `;
+                        }
+                      }}
+                    />
+                  </div>
+                ) : (
+                  <div className="aspect-w-16 aspect-h-9 bg-gray-300 dark:bg-gray-700 mb-6 rounded-lg overflow-hidden">
+                    <div className="w-full h-64 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white">
+                      {selectedProject.title}
                     </div>
-                  ) : (
-                    <div className="aspect-w-16 aspect-h-9 bg-gray-300 dark:bg-gray-700 mb-6 rounded-lg overflow-hidden">
-                      <div className="w-full h-64 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white">
-                        {selectedProject.title}
-                      </div>
-                    </div>
-                  )}
-                </div>
+                  </div>
+                )}
 
                 <p className="text-gray-600 dark:text-gray-400 mb-6">{selectedProject.longDescription}</p>
 
@@ -306,24 +428,33 @@ const Projects = () => {
                 </div>
 
                 <div className="flex flex-wrap gap-4">
-                  <a
-                    href={selectedProject.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-6 py-3 flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
-                  >
-                    <FiExternalLink size={18} />
-                    <span>View Live Demo</span>
-                  </a>
-                  <a
-                    href={selectedProject.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-6 py-3 flex items-center space-x-2 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-white rounded-lg transition-colors"
-                  >
-                    <FiGithub size={18} />
-                    <span>View Source Code</span>
-                  </a>
+                  {selectedProject.liveUrl && (
+                    <a
+                      href={selectedProject.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-6 py-3 flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+                    >
+                      <FiExternalLink size={18} />
+                      <span>View Live Demo</span>
+                    </a>
+                  )}
+                  {selectedProject.githubUrl && (
+                    <a
+                      href={selectedProject.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-6 py-3 flex items-center space-x-2 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-white rounded-lg transition-colors"
+                    >
+                      <FiGithub size={18} />
+                      <span>View Source Code</span>
+                    </a>
+                  )}
+                  {!selectedProject.githubUrl && !selectedProject.liveUrl && (
+                    <p className="text-gray-600 dark:text-gray-400 italic">
+                      This project was developed for a client and the code is proprietary.
+                    </p>
+                  )}
                 </div>
               </div>
             </motion.div>

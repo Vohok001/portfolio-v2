@@ -103,7 +103,7 @@ const Hero = () => {
               className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-gray-800 dark:text-white"
               variants={itemVariants}
             >
-              Hi, I'm <span className="text-blue-600">Your Name</span>
+              Hi, I'm <span className="text-blue-600">Khushbu Vohora</span>
             </motion.h1>
 
             <motion.h2
@@ -145,7 +145,7 @@ const Hero = () => {
               variants={itemVariants}
             >
               <a
-                href="https://github.com/yourusername"
+                href="https://github.com/vohok001"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
@@ -154,7 +154,7 @@ const Hero = () => {
                 <FiGithub size={24} />
               </a>
               <a
-                href="https://linkedin.com/in/yourusername"
+                href="https://linkedin.com/in/khushbu-vohora"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
@@ -163,7 +163,7 @@ const Hero = () => {
                 <FiLinkedin size={24} />
               </a>
               <a
-                href="mailto:your.email@example.com"
+                href="mailto:khushbuvohora@gmail.com"
                 className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
                 aria-label="Email"
               >
@@ -178,7 +178,7 @@ const Hero = () => {
             variants={itemVariants}
           >
             <motion.div
-              className="relative w-full h-96 rounded-lg shadow-2xl overflow-hidden"
+              className="relative w-full h-96  overflow-hidden"
               initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}

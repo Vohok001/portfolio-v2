@@ -2,62 +2,93 @@
 export const projects = [
   {
     id: 1,
-    title: 'E-Commerce Platform',
-    description: 'A full-featured e-commerce platform built with Ruby on Rails and React.',
-    longDescription: 'This project demonstrates my ability to build complex web applications...',
-    // Multiple media items
+    title: 'Laundrybird',
+    description: 'On-demand laundry service platform with dynamic pricing and scheduling',
+    longDescription: 'Designed and developed independently, LaundryBird is a fully customized web app for managing laundry orders, built with Ruby on Rails, JavaScript, and Bootstrap. It features a seamless booking system, dynamic service pricing, user dashboards, admin order management, and time slot scheduling. The project showcases end-to-end development, from database structuring to front-end interactivity, emphasizing user experience and efficient workflow management.',
+    // Multiple media items with placeholder for video
+    coverImage: {
+      src: '/images/laundry/lb-1.png',
+      alt: 'Laundrybird app'
+    },
     media: [
-      { type: 'image', src: '/images/project1-1.jpg', alt: 'Dashboard view' },
-      { type: 'image', src: '/images/project1-2.jpg', alt: 'Product listing' },
-      { type: 'video', src: '/videos/project1-demo.mp4', poster: '/images/project1-video-thumbnail.jpg' }
+      { type: 'image', src: '/images/laundry/lb-2.png', alt: 'Quest Odyssey homepage' },
+      { type: 'image', src: '/images/laundry/lb-3.png', alt: 'Quest Odyssey homepage' },
+      { type: 'image', src: '/images/laundry/lb-4.png', alt: 'Quest Odyssey homepage' },
+      { type: 'image', src: '/images/laundry/lb-5.png', alt: 'Quest Odyssey homepage' },
+      { type: 'image', src: '/images/laundry/lb-8.png', alt: 'Quest Odyssey homepage' },
+      { type: 'image', src: '/images/laundry/lb-9.png', alt: 'Quest Odyssey homepage' },
+      { type: 'image', src: '/images/laundry/lb-10.png', alt: 'Quest Odyssey homepage' },
+      { type: 'image', src: '/images/laundry/lb-11.png', alt: 'Quest Odyssey homepage' },
+      { type: 'image', src: '/images/laundry/lb-16.png', alt: 'Quest Odyssey homepage' },
+      { type: 'image', src: '/images/laundry/lb-17.png', alt: 'Quest Odyssey homepage' },
+      { type: 'image', src: '/images/laundry/lb-18.png', alt: 'Quest Odyssey homepage' },
+      { type: 'image', src: '/images/laundry/lb-20.png', alt: 'Quest Odyssey homepage' },
+      { type: 'image', src: '/images/laundry/lb-21.png', alt: 'Quest Odyssey homepage' },
+      { type: 'image', src: '/images/laundry/lb-22.png', alt: 'Quest Odyssey homepage' },
+      // Placeholder for video - update when available
+      { type: 'video', src: '/videos/laundry-demo.mp4', poster: '/images/laundry/laundry-poster.png' }
     ],
-    technologies: ['Ruby on Rails', 'React', 'PostgreSQL', 'Tailwind CSS', 'Stripe API'],
-    liveUrl: 'https://example.com/project1', // Can still include these if available
-    githubUrl: 'https://github.com/yourusername/project1',
+    technologies: ['Ruby on Rails', 'StimulusJS', 'PostgreSQL', 'SASS/CSS', 'Stripe API', 'Pundit', 'Bootstrap'],
+    liveUrl: 'https://example.com/project1',
     featured: true
   },
   {
     id: 2,
-    title: 'Task Management App',
-    description: 'A collaborative task management application with real-time updates using Action Cable and React. Organize tasks with boards, lists, and cards.',
-    longDescription: 'This task management app was inspired by Trello and built with Ruby on Rails backend and React frontend. It features real-time updates using Action Cable (WebSockets), drag-and-drop functionality for tasks, user collaboration with permissions, and a notification system. The app is fully responsive and works across all devices.',
-    image: '/images/project2.jpg',
-    technologies: ['Ruby on Rails', 'React', 'Action Cable', 'PostgreSQL', 'Redux'],
-    liveUrl: 'https://example.com/project2',
-    githubUrl: 'https://github.com/yourusername/project2',
+    title: 'Scheduling App',
+    description: 'A D&D campaign manager with real-time availability tracking, character creation, and in-app chat',
+    longDescription: 'Developed in a team using Agile and pair programming, this web app helps D&D players manage campaigns, track availability, and create characters. Built with Ruby on Rails, JavaScript, and StimulusJS, it features real-time updates, interactive character sheets, and an in-app chat system for seamless collaboration.',
+    coverImage: {
+      src: '/images/quest/quest-cover.png',
+      alt: 'Quest Odyssey app'
+    },
+    media: [
+      { type: 'image', src: '/images/quest/QO1.png', alt: 'Quest Odyssey homepage' },
+      { type: 'image', src: '/images/quest/QO2.png', alt: 'Quest Odyssey scheduling' },
+      { type: 'image', src: '/images/quest/QO3.png', alt: 'Character creation' },
+      { type: 'image', src: '/images/quest/QO4.png', alt: 'Campaign dashboard' },
+      { type: 'image', src: '/images/quest/QO5.png', alt: 'Player interface' },
+      { type: 'image', src: '/images/quest/QO6.png', alt: 'Session details' },
+      { type: 'image', src: '/images/quest/QO7.png', alt: 'Chat system' },
+      { type: 'image', src: '/images/quest/QO8.png', alt: 'Character sheet' },
+      { type: 'image', src: '/images/quest/QO9.png', alt: 'Game master view' },
+      { type: 'image', src: '/images/quest/QO11.png', alt: 'Campaign overview' },
+      { type: 'image', src: '/images/quest/QO12.png', alt: 'Settings screen' },
+      { type: 'image', src: '/images/quest/QO15.png', alt: 'Availability tracker' },
+      { type: 'image', src: '/images/quest/QO16.png', alt: 'Mobile view' },
+      // Placeholder for video - update when available
+      { type: 'video', src: '/videos/quest-demo.mp4', poster: '/images/quest/QO-poster.png' }
+    ],
+    technologies: ['Ruby on Rails', 'JavaScript', 'Devise', 'PostgreSQL', 'SASS/CSS'],
+    liveUrl: 'https://quest-odyssey-roooliver-weaver-d02f7d91e6c9.herokuapp.com/',
+    githubUrl: 'https://github.com/RooOliver-Weaver/quest_odyssey',
     featured: true
   },
   {
     id: 3,
-    title: 'Weather Dashboard',
-    description: 'A weather dashboard that displays current and forecasted weather information using the OpenWeatherMap API. Built with React and Tailwind CSS.',
-    longDescription: 'This weather dashboard pulls data from the OpenWeatherMap API to show current weather conditions and a 5-day forecast. Users can search for locations, save favorite cities, and view detailed weather information including temperature, humidity, wind speed, and UV index. The app uses geolocation to show the user\'s local weather by default.',
-    image: '/images/project3.jpg',
-    technologies: ['React', 'Tailwind CSS', 'OpenWeatherMap API', 'Chart.js'],
-    liveUrl: 'https://example.com/project3',
-    githubUrl: 'https://github.com/yourusername/project3',
-    featured: false
-  },
-  {
-    id: 4,
-    title: 'Social Media Dashboard',
-    description: 'A social media analytics dashboard that aggregates data from various platforms. Built with React, D3.js for data visualization.',
-    longDescription: 'This dashboard aggregates analytics data from multiple social media platforms including Twitter, Instagram, and Facebook. It displays key metrics like engagement rate, follower growth, and post performance. The app uses D3.js for interactive data visualizations and implements OAuth for connecting to the different social media APIs.',
-    image: '/images/project4.jpg',
-    technologies: ['React', 'D3.js', 'Node.js', 'Express', 'MongoDB'],
-    liveUrl: 'https://example.com/project4',
-    githubUrl: 'https://github.com/yourusername/project4',
-    featured: true
-  },
-  {
-    id: 5,
-    title: 'Real Estate Listings',
-    description: 'A real estate listing platform with advanced search features, interactive maps, and property management. Built with Ruby on Rails.',
-    longDescription: 'This real estate platform allows users to search for properties using various filters including location, price range, and amenities. It features an interactive map view using the Google Maps API, virtual tours with 360° images, and a direct messaging system for contacting property owners or agents. The admin panel allows realtors to manage their listings and track viewer statistics.',
-    image: '/images/project5.jpg',
-    technologies: ['Ruby on Rails', 'PostgreSQL', 'Google Maps API', 'Stimulus.js', 'Hotwire'],
-    liveUrl: 'https://example.com/project5',
-    githubUrl: 'https://github.com/yourusername/project5',
+    title: 'Accommodation App',
+    description: 'A rental platform featuring villain-inspired lairs. Browse unique properties and book your perfect hideout',
+    longDescription: 'Developed in a team using Agile methodologies, this themed rental platform allows users to browse and book extravagant villain-inspired hideouts. Built with Ruby on Rails, JavaScript, and StimulusJS, it features dynamic property listings, a seamless booking system, and an intuitive UI for both guests and hosts.',
+    coverImage: {
+      src: '/images/villas/VVhp.png',
+      alt: 'Villainous Villas app'
+    },
+    media: [
+      { type: 'image', src: '/images/villas/VV1.png', alt: 'Property listing' },
+      { type: 'image', src: '/images/villas/VV2.png', alt: 'Booking interface' },
+      { type: 'image', src: '/images/villas/VV3.png', alt: 'Property details' },
+      { type: 'image', src: '/images/villas/VV4.png', alt: 'User dashboard' },
+      { type: 'image', src: '/images/villas/VV5.png', alt: 'Search functionality' },
+      { type: 'image', src: '/images/villas/VV6.png', alt: 'Host view' },
+      { type: 'image', src: '/images/villas/VV7.png', alt: 'Property creation' },
+      { type: 'image', src: '/images/villas/VV8.png', alt: 'Booking confirmation' },
+      { type: 'image', src: '/images/villas/VV9.png', alt: 'User profile' },
+      { type: 'image', src: '/images/villas/VV10.png', alt: 'Reviews section' },
+      { type: 'image', src: '/images/villas/VV11.png', alt: 'Mobile responsive view' },
+      // Placeholder for video - update when available
+      { type: 'video', src: '/videos/villas-demo.mp4', poster: '/images/villas/VV-poster.png' }
+    ],
+    technologies: ['Ruby on Rails', 'JavaScript', 'Devise', 'PostgreSQL', 'SASS/CSS'],
+    githubUrl: 'https://github.com/Vohok001/villanous_villas',
     featured: false
   }
 ];

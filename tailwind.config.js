@@ -8,6 +8,15 @@ export default {
   darkMode: 'class', // Enable class-based dark mode
   theme: {
     extend: {
+      colors: {
+        blue: {
+          // Override the default blue shades
+          50: '#eff6ff',
+          100: '#F19C7D',
+          600: '#53B29B',
+          700: '#7B1FA2',
+        },
+      },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
       },

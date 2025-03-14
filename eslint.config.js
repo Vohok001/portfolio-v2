@@ -23,10 +23,8 @@ export default [
     rules: {
       ...js.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
-      'no-unused-vars': ['error', { varsIgnorePattern: '^motion$' }],
       'no-unused-vars': ['error', {
-        varsIgnorePattern: '^(motion|Fi[A-Za-z]+|ProjectMediaCarousel|React|y)$'
+        varsIgnorePattern: '^(motion|Fi[A-Za-z]+|ProjectMediaCarousel|React|y|SvgAvatar|useEffect|loadedImages)$'
       }],
       'react-refresh/only-export-components': [
         'warn',

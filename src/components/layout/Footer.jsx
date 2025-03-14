@@ -12,7 +12,7 @@ const Footer = () => {
           {/* About / Logo Section */}
           <div>
             <h3 className="text-xl font-bold mb-4">
-              Dev<span className="text-blue-400">Portfolio</span>
+              KV <span className="text-blue-400"> Portfolio</span>
             </h3>
             <p className="text-gray-400 mb-6">
               A showcase of my web development projects and skills.
