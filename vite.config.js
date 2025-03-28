@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/portfolio-v2/', // Replace with your repository name (for GitHub Pages deployment)
+  base: '/portfolio-v2/', 
   server: {
     port: 3000,
     open: true,
