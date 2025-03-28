@@ -35,13 +35,7 @@ export default {
     },
   },
   plugins: [
-    // Add tailwindcss/forms if using forms extensively
-    // require('@tailwindcss/forms'),
 
-    // Add tailwindcss/typography if you need prose classes
-    // require('@tailwindcss/typography'),
-
-    // Add line-clamp functionality
     function ({ addUtilities }) {
       const newUtilities = {
         '.line-clamp-1': {

@@ -29,7 +29,6 @@ export const projects = [
       { type: 'video', src: '/videos/laundry-demo.mp4', poster: '/images/laundry/laundry-poster.png' }
     ],
     technologies: ['Ruby on Rails', 'StimulusJS', 'PostgreSQL', 'SASS/CSS', 'Stripe API', 'Pundit', 'Bootstrap'],
-    liveUrl: 'https://example.com/project1',
     featured: true
   },
   {
@@ -59,7 +58,6 @@ export const projects = [
       { type: 'video', src: '/videos/quest-demo.mp4', poster: '/images/quest/QO-poster.png' }
     ],
     technologies: ['Ruby on Rails', 'JavaScript', 'Devise', 'PostgreSQL', 'SASS/CSS'],
-    liveUrl: 'https://quest-odyssey-roooliver-weaver-d02f7d91e6c9.herokuapp.com/',
     githubUrl: 'https://github.com/RooOliver-Weaver/quest_odyssey',
     featured: true
   },
