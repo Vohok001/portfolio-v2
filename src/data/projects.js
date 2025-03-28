@@ -1,4 +1,5 @@
 // src/data/projects.js
+ 
 export const projects = [
   {
     id: 1,
@@ -26,7 +27,7 @@ export const projects = [
       { type: 'image', src: 'images/laundry/lb-21.png', alt: 'Quest Odyssey homepage' },
       { type: 'image', src: 'images/laundry/lb-22.png', alt: 'Quest Odyssey homepage' },
       // Placeholder for video - update when available
-      { type: 'video', src: 'videos/laundry-demo.mp4', poster: '/images/laundry/laundry-poster.png' }
+      { type: 'video', src: 'videos/laundry-demo.mp4', poster: 'images/laundry/laundry-poster.png' }
     ],
     technologies: ['Ruby on Rails', 'StimulusJS', 'PostgreSQL', 'SASS/CSS', 'Stripe API', 'Pundit', 'Bootstrap'],
     featured: true
@@ -55,7 +56,7 @@ export const projects = [
       { type: 'image', src: 'images/quest/QO15.png', alt: 'Availability tracker' },
       { type: 'image', src: 'images/quest/QO16.png', alt: 'Mobile view' },
       // Placeholder for video - update when available
-      { type: 'video', src: 'videos/quest-demo.mp4', poster: '/images/quest/QO-poster.png' }
+      { type: 'video', src: 'videos/quest-demo.mp4', poster: 'images/quest/QO-poster.png' }
     ],
     technologies: ['Ruby on Rails', 'JavaScript', 'Devise', 'PostgreSQL', 'SASS/CSS'],
     githubUrl: 'https://github.com/RooOliver-Weaver/quest_odyssey',
@@ -83,7 +84,7 @@ export const projects = [
       { type: 'image', src: 'images/villas/VV10.png', alt: 'Reviews section' },
       { type: 'image', src: 'images/villas/VV11.png', alt: 'Mobile responsive view' },
       // Placeholder for video - update when available
-      { type: 'video', src: 'videos/villas-demo.mp4', poster: '/images/villas/VV-poster.png' }
+      { type: 'video', src: 'videos/villas-demo.mp4', poster: 'images/villas/VV-poster.png' }
     ],
     technologies: ['Ruby on Rails', 'JavaScript', 'Devise', 'PostgreSQL', 'SASS/CSS'],
     githubUrl: 'https://github.com/Vohok001/villanous_villas',
