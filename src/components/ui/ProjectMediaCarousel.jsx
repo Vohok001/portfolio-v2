@@ -1,8 +1,26 @@
 import { useState } from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 const ProjectMediaCarousel = ({ media, coverImage }) => {
+    // Add this logging useEffect right here, after your component declaration
+    useEffect(() => {
+      console.log('Media items:', media);
+      console.log('Cover image:', coverImage);
+
+      // If you want to check specific paths more clearly:
+      if (coverImage) {
+        console.log('Cover image path:', coverImage.src);
+      }
+
+      if (media && Array.isArray(media)) {
+        media.forEach((item, index) => {
+          console.log(`Media item ${index} path:`, item.src);
+        });
+      }
+    }, [media, coverImage]);
+
   // Initialize with media array that includes the coverImage if provided
   const allMedia = coverImage
     ? [{ type: 'image', src: coverImage.src, alt: coverImage.alt }, ...media]
