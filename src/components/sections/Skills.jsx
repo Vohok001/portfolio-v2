@@ -1,4 +1,3 @@
-// src/components/sections/Skills.jsx
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { skills } from '../../data/skills';
@@ -40,7 +39,7 @@ const Skills = () => {
             My <span className="text-blue-600">Skills</span>
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Here's a comprehensive overview of my technical skills and proficiency levels. I'm constantly learning and improving my stack.
+            Here's an overview of the technologies and tools I work with. I'm continuously learning and expanding my skillset.
           </p>
         </motion.div>
 
@@ -72,22 +71,14 @@ const Skills = () => {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                 {skillCategory.items.map((skill) => (
-                  <motion.div key={skill.name} variants={itemVariants} className="mb-6">
-                    <div className="flex justify-between mb-1">
-                      <span className="text-gray-800 dark:text-white font-medium">{skill.name}</span>
-                      <span className="text-gray-600 dark:text-gray-400">{skill.level}%</span>
-                    </div>
-                    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-                      <motion.div
-                        className="bg-blue-600 h-2.5 rounded-full"
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        transition={{ duration: 1, delay: 0.3 }}
-                        viewport={{ once: true }}
-                      ></motion.div>
-                    </div>
+                  <motion.div
+                    key={skill.name}
+                    variants={itemVariants}
+                    className="bg-white dark:bg-gray-700 rounded-lg p-4 shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center border border-gray-100 dark:border-gray-600"
+                  >
+                    <span className="text-gray-800 dark:text-white font-medium">{skill.name}</span>
                   </motion.div>
                 ))}
               </div>
