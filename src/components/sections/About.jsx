@@ -1,7 +1,22 @@
-// src/components/sections/About.jsx
 import { motion } from 'framer-motion';
 import { FiDownload, FiCalendar, FiAward, FiCode } from 'react-icons/fi';
 import profileImage from '../../assets/KV_pic_2.jpg';
+
+// Helper function to fix paths for GitHub Pages
+const fixPath = (path) => {
+  if (!path) return '';
+
+  // If the path already includes the full URL or base path, return it
+  if (path.includes('://') || path.includes('/portfolio-v2/')) {
+    return path;
+  }
+
+  // If the path starts with a slash, remove it
+  const cleanPath = path.startsWith('/') ? path.substring(1) : path;
+
+  // Add the base path for GitHub Pages
+  return `/portfolio-v2/${cleanPath}`;
+};
 
 const About = () => {
   // Animation variants
@@ -23,6 +38,13 @@ const About = () => {
       transition: { duration: 0.5 },
     },
   };
+
+  // Determine if we're in development or production
+  const isProduction = window.location.hostname !== 'localhost' &&
+                      !window.location.hostname.includes('127.0.0.1');
+
+  // Get the correct resume path
+  const resumePath = isProduction ? fixPath('kv-resume.pdf') : '/kv-resume.pdf';
 
   return (
     <section id="about" className="py-20 bg-white dark:bg-gray-900">
@@ -113,7 +135,7 @@ const About = () => {
             </div>
 
             <a
-              href="/kv-resume.pdf"
+              href={resumePath}
               download
               className="inline-flex items-center space-x-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
             >
