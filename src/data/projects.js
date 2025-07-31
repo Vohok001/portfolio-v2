@@ -12,24 +12,25 @@ export const projects = [
       alt: 'Laundrybird app'
     },
     media: [
-      { type: 'image', src: 'images/laundry/lb-2.png', alt: 'Quest Odyssey homepage' },
-      { type: 'image', src: 'images/laundry/lb-3.png', alt: 'Quest Odyssey homepage' },
-      { type: 'image', src: 'images/laundry/lb-4.png', alt: 'Quest Odyssey homepage' },
-      { type: 'image', src: 'images/laundry/lb-5.png', alt: 'Quest Odyssey homepage' },
-      { type: 'image', src: 'images/laundry/lb-8.png', alt: 'Quest Odyssey homepage' },
-      { type: 'image', src: 'images/laundry/lb-9.png', alt: 'Quest Odyssey homepage' },
-      { type: 'image', src: 'images/laundry/lb-10.png', alt: 'Quest Odyssey homepage' },
-      { type: 'image', src: 'images/laundry/lb-11.png', alt: 'Quest Odyssey homepage' },
-      { type: 'image', src: 'images/laundry/lb-16.png', alt: 'Quest Odyssey homepage' },
-      { type: 'image', src: 'images/laundry/lb-17.png', alt: 'Quest Odyssey homepage' },
-      { type: 'image', src: 'images/laundry/lb-18.png', alt: 'Quest Odyssey homepage' },
-      { type: 'image', src: 'images/laundry/lb-20.png', alt: 'Quest Odyssey homepage' },
-      { type: 'image', src: 'images/laundry/lb-21.png', alt: 'Quest Odyssey homepage' },
-      { type: 'image', src: 'images/laundry/lb-22.png', alt: 'Quest Odyssey homepage' },
+      { type: 'image', src: 'images/laundry/lb-2.png', alt: 'Contact Page' },
+      { type: 'image', src: 'images/laundry/lb-3.png', alt: 'About Page' },
+      { type: 'image', src: 'images/laundry/lb-4.png', alt: 'Banner component' },
+      { type: 'image', src: 'images/laundry/lb-5.png', alt: 'Services Page' },
+      { type: 'image', src: 'images/laundry/lb-8.png', alt: 'How to Steps' },
+      { type: 'image', src: 'images/laundry/lb-9.png', alt: 'How to banner' },
+      { type: 'image', src: 'images/laundry/lb-10.png', alt: 'video banner' },
+      { type: 'image', src: 'images/laundry/lb-11.png', alt: 'Checkout page' },
+      { type: 'image', src: 'images/laundry/lb-16.png', alt: 'User Dashboard' },
+      { type: 'image', src: 'images/laundry/lb-17.png', alt: 'AdminDashboard' },
+      { type: 'image', src: 'images/laundry/lb-18.png', alt: 'Admin Calendar' },
+      { type: 'image', src: 'images/laundry/lb-20.png', alt: 'Admin Order Page' },
+      { type: 'image', src: 'images/laundry/lb-21.png', alt: 'Footer' },
+      { type: 'image', src: 'images/laundry/lb-22.png', alt: 'Admin Time Slots' },
       // Placeholder for video - update when available
-      { type: 'video', src: 'videos/laundry-demo.mp4', poster: 'images/laundry/laundry-poster.png' }
+      { type: 'video', src: 'videos/laundry-demo.mp4', poster: 'images/laundry/laundry-poster.png', alt: 'Laundry Website demo video' }
     ],
     technologies: ['Ruby on Rails', 'StimulusJS', 'PostgreSQL', 'SASS/CSS', 'Stripe API', 'Pundit', 'Bootstrap'],
+    githubUrl: 'https://laundrybird-e6abf3927c05.herokuapp.com/',
     featured: true
   },
   {
@@ -56,7 +57,7 @@ export const projects = [
       { type: 'image', src: 'images/quest/QO15.png', alt: 'Availability tracker' },
       { type: 'image', src: 'images/quest/QO16.png', alt: 'Mobile view' },
       // Placeholder for video - update when available
-      { type: 'video', src: 'videos/quest-demo.mp4', poster: 'images/quest/QO-poster.png' }
+      { type: 'video', src: 'videos/quest-demo.mp4', poster: 'images/quest/QO-poster.png', alt: 'Gaming Website demo video' }
     ],
     technologies: ['Ruby on Rails', 'JavaScript', 'Devise', 'PostgreSQL', 'SASS/CSS'],
     githubUrl: 'https://github.com/RooOliver-Weaver/quest_odyssey',
@@ -84,7 +85,7 @@ export const projects = [
       { type: 'image', src: 'images/villas/VV10.png', alt: 'Reviews section' },
       { type: 'image', src: 'images/villas/VV11.png', alt: 'Mobile responsive view' },
       // Placeholder for video - update when available
-      { type: 'video', src: 'videos/villas-demo.mp4', poster: 'images/villas/VV-poster.png' }
+      { type: 'video', src: 'videos/villas-demo.mp4', poster: 'images/villas/VV-poster.png', alt: 'Air bnb clone Website demo video' }
     ],
     technologies: ['Ruby on Rails', 'JavaScript', 'Devise', 'PostgreSQL', 'SASS/CSS'],
     githubUrl: 'https://github.com/Vohok001/villanous_villas',

@@ -3,30 +3,29 @@ export const skills = [
   {
     category: "Frontend",
     items: [
-      { name: "HTML5", level: 90 },
-      { name: "CSS3", level: 90 },
-      { name: "JavaScript", level: 50 },
-      { name: "React", level: 10 },
-      { name: "Tailwind CSS", level: 50 },
-      { name: "SASS/SCSS", level: 85 }
+      { name: "HTML5" },
+      { name: "CSS3" },
+      { name: "JavaScript"},
+      { name: "Tailwind CSS" },
+      { name: "SASS/SCSS" },
+      { name: "Bootstrap" }
     ]
   },
   {
     category: "Backend",
     items: [
-      { name: "Ruby", level: 80 },
-      { name: "Ruby on Rails", level: 80 },
-      { name: "PostgreSQL", level: 80 },
-      { name: "RESTful APIs", level: 85 },
+      { name: "Ruby on Rails" },
+      { name: "PostgreSQL" },
+      { name: "RESTful APIs" },
     ]
   },
   {
     category: "Tools & Others",
     items: [
-      { name: "Git", level: 90 },
-      { name: "GitHub", level: 85 },
-      { name: "Heroku", level: 80 },
-      { name: "Figma", level: 60 }
+      { name: "Git"},
+      { name: "GitHub" },
+      { name: "Heroku" },
+      { name: "Figma" }
     ]
   }
 ];
